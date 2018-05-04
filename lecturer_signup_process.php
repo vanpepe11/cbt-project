@@ -1,0 +1,19 @@
+<?php
+require("classlibrary/classlecturer.php");
+$lecturer = new Lecturer();
+$psize=$_FILES['passport']['size'];
+$ptype=$_FILES['passport']['type'];
+$pname=$_FILES['passport']['name'];
+$ploc=$_FILES['passport']['tmp_name'];
+$username=$_POST['username'];
+$lecturer->setSname($_POST['surname']);
+$lecturer->setMname($_POST['middlename']);
+$lecturer->setLname($_POST['lastname']);
+$lecturer->setEmail($_POST['email']);
+$lecturer->setName($username);
+$lecturer->setPass($_POST['password']);
+$lecturer->processFile($psize,$ptype,$pname,$ploc);
+$lecturer->connect();
+$lecturer->Adminsave();
+$lecturer->getTable();
+?>

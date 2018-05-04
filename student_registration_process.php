@@ -1,0 +1,27 @@
+<?php
+include("classlibrary/class_student.php");
+$student= new Student;
+$a=$_POST['surname'];
+$b=$_POST['middlename'];
+$c=$_POST['lastname'];
+$d=$_POST['gender'];
+$e=$_POST['address'];
+$f=$_POST['number'];
+$g=$_POST['email'];
+$h=$_POST['sponsorname'];
+$i=$_POST['sponsorno'];
+$j=$_POST['sponsormail'];
+$k=$_POST['username'];
+$l=$_POST['password'];
+$psize=$_FILES['passport']['size'];
+$ptype=$_FILES['passport']['type'];
+$pname=$_FILES['passport']['name'];
+$ploc=$_FILES['passport']['tmp_name'];
+$student->setBiodata($a,$b,$c,$d);
+$student->contact($e,$f,$g);
+$student->spInfo($h,$i,$j);
+$student->processFile($psize,$ptype,$pname,$ploc);
+$student->log($k,$l);
+$student->connect();
+$student->save();
+?>
